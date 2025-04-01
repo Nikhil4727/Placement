@@ -177,8 +177,8 @@ const StudentDetails: React.FC = () => {
               <table className="w-full">
                 <thead>
                   <tr className="bg-gray-100">
-                    <th className="px-6 py-3 text-left text-xs font-medium text-red-500 uppercase tracking-wider">Assessment</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-red-500 uppercase tracking-wider">Score</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Assessment</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Score</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200">
