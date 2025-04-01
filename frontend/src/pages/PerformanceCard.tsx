@@ -56,7 +56,7 @@ const EnhancedFileUploader: React.FC = () => {
     setFiles([]);
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/api/files', {
+      const response = await axios.get('https://placement-web.onrender.com/api/files', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setFiles(response.data);
@@ -111,7 +111,7 @@ const EnhancedFileUploader: React.FC = () => {
         });
       }, 300);
       
-      await axios.post('http://localhost:5000/api/upload', uploadData, {
+      await axios.post('https://placement-web.onrender.com/api/upload', uploadData, {
         headers: { Authorization: `Bearer ${token}` },
       });
       
@@ -144,7 +144,7 @@ const EnhancedFileUploader: React.FC = () => {
     
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:5000/api/file/${filename}`, {
+      await axios.delete(`https://placement-web.onrender.com/api/file/${filename}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       

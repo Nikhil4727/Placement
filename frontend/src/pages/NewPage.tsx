@@ -31,7 +31,7 @@ const PlacementPortal: React.FC = () => {
     setFilteredStudents([]);
     setSections([]);
   
-    fetch(`http://localhost:5000/api/students/${activeTab}?timestamp=${new Date().getTime()}`)
+    fetch(`https://placement-web.onrender.com/api/students/${activeTab}?timestamp=${new Date().getTime()}`)
       .then((response) => {
         if (!response.ok) throw new Error(`Failed to fetch ${activeTab} data`);
         return response.json();
