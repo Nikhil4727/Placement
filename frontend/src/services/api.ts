@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = 'https://placement-web.onrender.com/api';
 
 // Admin Signup Function
 export const signup = async (adminName, password) => {
