@@ -44,7 +44,7 @@ const PlacementPortal: React.FC = () => {
 
   const setData = async() => {
     try {
-      const res = await axios.get('https://placement-wjf9.onrender.com/data');
+      const res = await axios.get('http://localhost:5000/data');
       console.log(res.data);
       setAvailableCourses(res.data.courses);
       setYears(res.data.years);
@@ -63,7 +63,7 @@ const PlacementPortal: React.FC = () => {
     setStudents([]);
     setFilteredStudents([]);
 
-    fetch(`https://placement-wjf9.onrender.com/api/students/${activeTab}?timestamp=${new Date().getTime()}`)
+    fetch(`http://localhost:5000/api/students/${activeTab}?timestamp=${new Date().getTime()}`)
       .then((response) => {
         if (!response.ok) throw new Error(`Failed to fetch ${activeTab} data`);
         return response.json();

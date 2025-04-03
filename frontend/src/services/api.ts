@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://placement-wjf9.onrender.com/api';
+const API_URL = 'http://localhost:5000/api';
 
 // Admin Signup Function
 export const signup = async (adminName, password) => {

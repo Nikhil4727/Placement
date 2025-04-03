@@ -36,7 +36,7 @@ const AppWrapper = () => {
   };
   async function addCourses() {
     try {
-      const response = await axios.post("https://placement-wjf9.onrender.com/add-course", {
+      const response = await axios.post("http://localhost:5000/add-course", {
         coursename: newCourse
       })
       console.log(response.data);
@@ -48,7 +48,7 @@ const AppWrapper = () => {
   }
   const deleteCourse = async (id: string) => {
     try {
-      const response = await axios.delete("https://placement-wjf9.onrender.com/delete-course", {
+      const response = await axios.delete("http://localhost:5000/delete-course", {
         data: { id }  
       });
       console.log(response.data.message); 
@@ -62,7 +62,7 @@ const AppWrapper = () => {
 
   const addYears = async () => {
     try {
-      const response = await axios.post("https://placement-wjf9.onrender.com/add-year", {
+      const response = await axios.post("http://localhost:5000/add-year", {
         year: newYear
       })
       console.log(response.data);
@@ -81,7 +81,7 @@ const AppWrapper = () => {
 
   const deleteYear = async (id: string) => {
     try {
-      const response = await axios.delete("https://placement-wjf9.onrender.com/delete-year", {
+      const response = await axios.delete("http://localhost:5000/delete-year", {
         data: { id }  // Sending 'id' in the request body
       });
       console.log(response.data.message);  // Success message from backend
@@ -95,7 +95,7 @@ const AppWrapper = () => {
 
 
   const setData = () => {
-    axios.get('https://placement-wjf9.onrender.com/data')
+    axios.get('http://localhost:5000/data')
     .then(response => {
       // console.log(response.data);
       setCourses(response.data.courses);

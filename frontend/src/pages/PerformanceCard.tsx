@@ -44,7 +44,7 @@ const EnhancedFileUploader: React.FC = () => {
   // const courses = ;
   const setData = async() => {
     try {
-      const res = await axios.get('https://placement-wjf9.onrender.com/data');
+      const res = await axios.get('http://localhost:5000/data');
       console.log(res.data);
       setCourses(res.data.courses);
       setYears(res.data.years);
@@ -71,7 +71,7 @@ const EnhancedFileUploader: React.FC = () => {
     setFiles([]);
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('https://placement-wjf9.onrender.com/api/files', {
+      const response = await axios.get('http://localhost:5000/api/files', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setFiles(response.data);
@@ -126,7 +126,7 @@ const EnhancedFileUploader: React.FC = () => {
         });
       }, 300);
       
-      await axios.post('https://placement-wjf9.onrender.com/api/upload', uploadData, {
+      await axios.post('http://localhost:5000/api/upload', uploadData, {
         headers: { Authorization: `Bearer ${token}` },
       });
       
@@ -159,7 +159,7 @@ const EnhancedFileUploader: React.FC = () => {
     
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`https://placement-wjf9.onrender.com/api/file/${filename}`, {
+      await axios.delete(`http://localhost:5000/api/file/${filename}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       
@@ -465,7 +465,7 @@ const EnhancedFileUploader: React.FC = () => {
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                           <div className="flex space-x-3">
                             <a
-                              href={`https://placement-wjf9.onrender.com/api/download/${file.filename}`}
+                              href={`http://localhost:5000/api/download/${file.filename}`}
                               download
                               className="text-blue-600 hover:text-blue-900 p-1 hover:bg-blue-50 rounded-full transition-colors"
                               title="Download"
@@ -473,7 +473,7 @@ const EnhancedFileUploader: React.FC = () => {
                               <Download className="h-5 w-5" />
                             </a>
                             <a
-                              href={`https://placement-wjf9.onrender.com/view/${file.filename}`}
+                              href={`http://localhost:5000/view/${file.filename}`}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="text-green-600 hover:text-green-900 p-1 hover:bg-green-50 rounded-full transition-colors"
