@@ -20,7 +20,7 @@ const Home = () => {
 
           {/* Right Section - Image */}
           <div className="w-1/3 flex justify-left">
-            <img src="src/public/img1.png" alt="Training & Placement" className="pt-4 w-full h-30 max-w-xs"/>
+            <img src="./src/public/img1.png" alt="Training & Placement" className="pt-4 w-full h-30 max-w-xs"/>
           </div>
         </div>
       </div>
