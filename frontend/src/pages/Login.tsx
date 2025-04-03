@@ -19,7 +19,7 @@ const handleSubmit = async (e: React.FormEvent) => {
   setError('');
 
   try {
-    const response = await fetch(`https://placement-web.onrender.com/api/auth/login`, {
+    const response = await fetch('https://placement-wjf9.onrender.com/api/auth/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

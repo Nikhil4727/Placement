@@ -26,7 +26,7 @@ const PlacementPortal: React.FC = () => {
   useEffect(() => {
     setLoading(true);
     setError(null);
-    fetch(`https://placement-web.onrender.com/api/students/${activeTab}?timestamp=${new Date().getTime()}`)
+    fetch(`https://placement-wjf9.onrender.com/api/students/${activeTab}?timestamp=${new Date().getTime()}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error(`Failed to fetch ${activeTab} data`);

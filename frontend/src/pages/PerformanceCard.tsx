@@ -20,6 +20,8 @@ const EnhancedFileUploader: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [refreshTrigger, setRefreshTrigger] = useState(0);
+  const [years, setYears] = useState([{id:'1', year:'2022-3022'}]);
+  const [courses, setCourses] = useState([{id:'1', coursename:'ss'}]);
   
   // Filter states
   const [filters, setFilters] = useState({
@@ -38,9 +40,22 @@ const EnhancedFileUploader: React.FC = () => {
   }>({ show: false, message: '', type: 'success' });
 
   // Options for dropdowns
-  const years = ["2023-2027", "2022-2026", "2021-2025"];
-  const courses = ["QALR", "AWS", "CC"];
-  
+  // const years = ;
+  // const courses = ;
+  const setData = async() => {
+    try {
+      const res = await axios.get('https://placement-wjf9.onrender.com/data');
+      console.log(res.data);
+      setCourses(res.data.courses);
+      setYears(res.data.years);
+    } catch(err) {
+      console.log(err);
+    }
+  }
+  useEffect(() => {
+    setData();
+    
+  }, [])
   // Filter options
   const yearOptions = ["All", ...years];
   const courseOptions = ["All", ...courses];
@@ -56,7 +71,7 @@ const EnhancedFileUploader: React.FC = () => {
     setFiles([]);
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('https://placement-web.onrender.com/api/files', {
+      const response = await axios.get('https://placement-wjf9.onrender.com/api/files', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setFiles(response.data);
@@ -111,7 +126,7 @@ const EnhancedFileUploader: React.FC = () => {
         });
       }, 300);
       
-      await axios.post('https://placement-web.onrender.com/api/upload', uploadData, {
+      await axios.post('https://placement-wjf9.onrender.com/api/upload', uploadData, {
         headers: { Authorization: `Bearer ${token}` },
       });
       
@@ -144,7 +159,7 @@ const EnhancedFileUploader: React.FC = () => {
     
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`https://placement-web.onrender.com/api/file/${filename}`, {
+      await axios.delete(`https://placement-wjf9.onrender.com/api/file/${filename}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       
@@ -262,8 +277,9 @@ const EnhancedFileUploader: React.FC = () => {
                   className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
                 >
                   <option value="">Select Year</option>
-                  {years.map(year => (
-                    <option key={year} value={year}>{year}</option>
+                  {
+                  years.map(year => (
+                    <option key={year.year} value={year.year}>{year.year}</option>
                   ))}
                 </select>
               </div>
@@ -278,7 +294,7 @@ const EnhancedFileUploader: React.FC = () => {
                 >
                   <option value="">Select Course</option>
                   {courses.map(course => (
-                    <option key={course} value={course}>{course}</option>
+                    <option key={course.coursename} value={course.coursename}>{course.coursename}</option>
                   ))}
                 </select>
               </div>
@@ -365,7 +381,7 @@ const EnhancedFileUploader: React.FC = () => {
                     className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
                   >
                     {yearOptions.map(year => (
-                      <option key={year} value={year}>{year}</option>
+                      <option key={yea} value={year}>{year}</option>
                     ))}
                   </select>
                 </div>
@@ -449,7 +465,7 @@ const EnhancedFileUploader: React.FC = () => {
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                           <div className="flex space-x-3">
                             <a
-                              href={`http://localhost:5000/api/download/${file.filename}`}
+                              href={`https://placement-wjf9.onrender.com/api/download/${file.filename}`}
                               download
                               className="text-blue-600 hover:text-blue-900 p-1 hover:bg-blue-50 rounded-full transition-colors"
                               title="Download"
@@ -457,7 +473,7 @@ const EnhancedFileUploader: React.FC = () => {
                               <Download className="h-5 w-5" />
                             </a>
                             <a
-                              href={`http://localhost:5000/view/${file.filename}`}
+                              href={`https://placement-wjf9.onrender.com/view/${file.filename}`}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="text-green-600 hover:text-green-900 p-1 hover:bg-green-50 rounded-full transition-colors"
