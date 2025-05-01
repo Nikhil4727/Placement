@@ -105,7 +105,7 @@ const Home = () => {
           {/* Right Image */}
           <div className="lg:w-1/2 flex justify-center">
             <img
-              src="./src/public/img1.png"
+              src="/img1.png"
               alt="Training & Placement"
               className="w-80 md:w-[400px] drop-shadow-xl rounded-xl"
             />
