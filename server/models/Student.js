@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const StudentSchema = new mongoose.Schema({
+const studentSchema = new mongoose.Schema({
   Regnumber: { type: String, required: true, unique: true },
   sec: { type: String, required: true },
   year: { type: Number, required: true },
@@ -8,7 +8,7 @@ const StudentSchema = new mongoose.Schema({
   CodeChef: { type: Object, default: {} },
   Aws: { type: Array, default: [] },
   QALR: { type: Array, default: [] },
-});
+},{strict : false});
 
-const Student = mongoose.model('Student', StudentSchema);
+const Student = mongoose.model('Student', studentSchema);
 export default Student;

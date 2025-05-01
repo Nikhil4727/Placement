@@ -2,7 +2,7 @@ import express from 'express';
 import User from '../models/User.js'; // Incorrect if the actual file is User.js
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import auth from '../middleware/auth.js';
+import auth from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 router.post('/register', async (req, res) => {

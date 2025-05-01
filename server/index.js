@@ -6,10 +6,16 @@ import authRoutes from './routes/auth.js';
 import uploadRoutes from "./routes/uploadRoutes.js"; // Use named import
 import Course from './models/Course.js';
 import Year from './models/year.js';
+// Add this import if you're using a Student model
+import Student from './models/Student.js'; 
+// Add this import if you're using an Assessment model
+// import Assessment from './models/Assessment.js';
 
 dotenv.config();
 
 const app = express();
+// Define the router here
+const router = express.Router();
 
 // Middleware
 app.use(express.json());
@@ -84,6 +90,7 @@ app.delete('/delete-course', async (req, res) => {
     res.status(500).json({ message: 'Error deleting Course' });
   }
 });
+
 
 
 // Routes
